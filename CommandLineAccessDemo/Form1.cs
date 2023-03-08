@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using NetEti.ApplicationEnvironment;
+﻿using NetEti.ApplicationEnvironment;
 
 namespace NetEti.DemoApplications
 {
@@ -9,7 +7,7 @@ namespace NetEti.DemoApplications
     /// </summary>
     public partial class Form1 : Form
     {
-        private CommandLineAccess _CommandLineAccess;
+        private CommandLineAccess? _CommandLineAccess;
         public Form1()
         {
             InitializeComponent();

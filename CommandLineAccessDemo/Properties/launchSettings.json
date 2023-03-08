@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CommandLineAccessDemo": {
+      "commandName": "Project",
+      "commandLineArgs": "Harry Hirsch"
+    }
+  }
+}

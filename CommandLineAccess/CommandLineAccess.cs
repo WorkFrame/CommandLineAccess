@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using NetEti.Globals;
-using System.Collections.Generic;
+﻿using NetEti.Globals;
 
 namespace NetEti.ApplicationEnvironment
 {
@@ -37,9 +34,9 @@ namespace NetEti.ApplicationEnvironment
         /// <param name="key">Der Zugriffsschlüssel (string)</param>
         /// <param name="defaultValue">Das default-Ergebnis (string)</param>
         /// <returns>Der Ergebnis-String</returns>
-        public string GetStringValue(string key, string defaultValue)
+        public string? GetStringValue(string key, string? defaultValue)
         {
-            string rtn = defaultValue;
+            string? rtn = defaultValue;
             List<string> args = new List<string>();
             if (this._commandLineArgs != null)
             {
@@ -98,9 +95,9 @@ namespace NetEti.ApplicationEnvironment
         /// <param name="key">Der Zugriffsschlüssel (string)</param>
         /// <param name="defaultValues">Das default-Ergebnis (string[])</param>
         /// <returns>Das Ergebnis-String-Array</returns>
-        public string[] GetStringValues(string key, string[] defaultValues)
+        public string?[]? GetStringValues(string key, string?[]? defaultValues)
         {
-            string rtn = GetStringValue(key, null);
+            string? rtn = GetStringValue(key, null);
             if (rtn != null)
             {
                 return new string[] { rtn };
@@ -127,6 +124,8 @@ namespace NetEti.ApplicationEnvironment
         public CommandLineAccess()
         {
             this.Description = "Kommandozeile";
+            // 23.02.2023 Erik Nagel+: Umstellung auf .net standard 2.0
+            /*
             if (AppDomain.CurrentDomain.SetupInformation.ActivationArguments != null)
             {
                 this._commandLineArgs = AppDomain.CurrentDomain.SetupInformation.ActivationArguments.ActivationData;
@@ -135,6 +134,17 @@ namespace NetEti.ApplicationEnvironment
             {
                 this._commandLineArgs = Environment.GetCommandLineArgs();
             }
+            */
+            EnvAccess envAccess = new EnvAccess();
+            if (envAccess.ActivationData != null)
+            {
+                this._commandLineArgs = envAccess.ActivationData;
+            }
+            else
+            {
+                this._commandLineArgs = Environment.GetCommandLineArgs();
+            }
+            // 23.02.2023 Erik Nagel-: Umstellung auf .net standard 2.0
         }
 
         #endregion public members
