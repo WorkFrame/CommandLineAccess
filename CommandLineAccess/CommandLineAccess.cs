@@ -37,7 +37,6 @@ namespace NetEti.ApplicationEnvironment
         public string? GetStringValue(string key, string? defaultValue)
         {
             string? rtn = defaultValue;
-            List<string> args = new List<string>();
             if (this._commandLineArgs != null)
             {
                 foreach (string arg in this._commandLineArgs)
@@ -124,7 +123,7 @@ namespace NetEti.ApplicationEnvironment
         public CommandLineAccess()
         {
             this.Description = "Kommandozeile";
-            // 23.02.2023 Erik Nagel+: Umstellung auf .net standard 2.0
+            // 23.02.2023 Erik Nagel+: Umstellung auf .net 7.0
             /*
             if (AppDomain.CurrentDomain.SetupInformation.ActivationArguments != null)
             {
@@ -144,7 +143,7 @@ namespace NetEti.ApplicationEnvironment
             {
                 this._commandLineArgs = Environment.GetCommandLineArgs();
             }
-            // 23.02.2023 Erik Nagel-: Umstellung auf .net standard 2.0
+            // 23.02.2023 Erik Nagel-: Umstellung auf .net 7.0
         }
 
         #endregion public members
