@@ -25,6 +25,8 @@ namespace NetEti.ApplicationEnvironment
     /// </remarks>
     public class CommandLineAccess : IGetStringValue
     {
+        #region public members
+
         #region IGetStringValue Members
 
         /// <summary>
@@ -115,14 +117,23 @@ namespace NetEti.ApplicationEnvironment
 
         #endregion IGetStringValue Members
 
-        #region public members
+        /// <summary>
+        /// Liefert die Kommandozeile als einen String.
+        /// </summary>
+        public string? CommandLine
+        {
+            get
+            {
+                return String.Join(" ", this._commandLineArgs);
+            }
+        }
 
         /// <summary>
         /// Konstruktor - setzt den internen Reader
         /// </summary>
         public CommandLineAccess()
         {
-            this.Description = "Kommandozeile";
+            this.Description = "CommandLine";
             // 23.02.2023 Erik Nagel+: Umstellung auf .net 7.0
             /*
             if (AppDomain.CurrentDomain.SetupInformation.ActivationArguments != null)
