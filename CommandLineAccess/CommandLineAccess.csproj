@@ -9,7 +9,7 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <Title>$(AssemblyName) - Zugriff auf Kommandozeilen-Parameter</Title>
     <Description>Assembly für den Zugriff auf Kommandozeilen-Parameter</Description>
-    <Copyright>Copyright © $(Authors) 2012-2023</Copyright>
+    <Copyright>Copyright © $(Authors) 2012-$([System.DateTime]::Now.Year)</Copyright>
     <Authors>Erik Nagel</Authors>
     <Company>NetEti</Company>
     <AssemblyVersion>8.0.0.0</AssemblyVersion>
